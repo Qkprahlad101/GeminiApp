@@ -20,7 +20,7 @@ class GeminiDataSource {
     suspend fun generateSummary(inputText: String): Result<Summary> {
         if (inputText.isBlank()) return Result.Failure(Summary(error = "Input text cannot be empty", ))
 
-        val prompt = "Summarize the following text in a concise, bullet-point format (max 10 bullets, keep under 150 words): $inputText"
+        val prompt = "Summarize the following text in a concise, bullet-point format (max 10 bullets, keep under 200 words): $inputText"
         return try {
             val response = model.generateContent(prompt)
 
