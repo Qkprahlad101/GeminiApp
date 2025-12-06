@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.firstgeminiapp.navigation.AppNav
 import com.example.firstgeminiapp.ui.theme.FirstGeminiAppTheme
 
 @ExperimentalMaterial3Api
@@ -21,27 +22,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             FirstGeminiAppTheme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-//                    topBar = {
-//                        TopAppBar(title = {
-//                            Column(
-//                                modifier = Modifier.padding(16.dp),
-//                                horizontalAlignment = Alignment.CenterHorizontally
-//                            ) {
-//                                Icon(
-//                                    imageVector = Icons.Default.ArrowBack,
-//                                    contentDescription = ""
-//                                )
-//                            }
-//                            Text(text = "Gemini Summary")
-//                        })
-//                    }
-                ) { innerPadding ->
-                    TextSummaryScreen(
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                AppNav()
             }
         }
     }

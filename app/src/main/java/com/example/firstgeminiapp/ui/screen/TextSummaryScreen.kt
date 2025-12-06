@@ -54,11 +54,6 @@ fun TextSummaryScreen(viewModel: GetSummaryViewModel = koinViewModel(), modifier
 
         when (val state = uiState) {
             is UiState.Idle -> {
-                Text(
-                    text = "Enter a prompt and click button to start",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.secondary
-                )
                 OutlinedTextField(
                     value = promptText,
                     onValueChange = { promptText = it },
