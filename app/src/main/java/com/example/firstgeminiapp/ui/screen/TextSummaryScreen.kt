@@ -30,18 +30,27 @@ import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun HomeScreen(viewModel: GetSummaryViewModel = koinViewModel(), modifier: Modifier) {
+fun TextSummaryScreen(viewModel: GetSummaryViewModel = koinViewModel(), modifier: Modifier) {
 
     val uiState by viewModel.uiState.collectAsState()
     var promptText by remember { mutableStateOf("") }
     val scrollState = rememberScrollState()
 
     Column(
-        modifier = modifier.padding(16.dp)
+        modifier = modifier
+            .padding(16.dp)
             .verticalScroll(scrollState),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+
+        Text(
+            text = "Text Summary using Gemini",
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.secondary
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
 
         when (val state = uiState) {
             is UiState.Idle -> {
