@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "166854790786",
+    "project_id": "firstgeminiapp-94133",
+    "storage_bucket": "firstgeminiapp-94133.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166854790786:android:dc24d360fc5b2c8a79ae9b",
+        "android_client_info": {
+          "package_name": "com.example.firstgeminiapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuB8d0Avpy1TRHVNOSoKIZSWLZOjFeg5k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
