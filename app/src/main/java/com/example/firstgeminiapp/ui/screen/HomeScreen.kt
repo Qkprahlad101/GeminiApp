@@ -35,28 +35,6 @@ fun HomeScreen(viewModel: GetSummaryViewModel = koinViewModel(), modifier: Modif
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = "Gemini Summary App",
-            style = MaterialTheme.typography.titleSmall
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        OutlinedTextField(
-            value = promptText,
-            onValueChange = { promptText = it},
-            label = {Text("Enter the text you want to summarise!")},
-            minLines = 3,
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Button(onClick = {
-            viewModel.getSummary(promptText)
-        }) {
-            Text(text = "Get Summary")
-        }
 
         when(val state = uiState) {
             is UiState.Idle -> {
@@ -65,16 +43,38 @@ fun HomeScreen(viewModel: GetSummaryViewModel = koinViewModel(), modifier: Modif
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.secondary
                 )
+                OutlinedTextField(
+                    value = promptText,
+                    onValueChange = { promptText = it},
+                    label = {Text("Enter the text you want to summarise!")},
+                    minLines = 3,
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Button(onClick = {
+                    viewModel.getSummary(promptText)
+                }) {
+                    Text(text = "Get Summary")
+                }
             }
             is UiState.Loading -> {
                 CircularProgressIndicator()
             }
             is UiState.Success -> {
                 Text(
-                    text = "Summary Result: ${state.data}",
+                    text = "Summary Result: ${state.data.text}",
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier.align(Alignment.Start)
                 )
+
+                Button(onClick = {
+                    promptText = ""
+                    viewModel.reset()
+                }) {
+                    Text(text = "Reset")
+                }
             }
             is UiState.Failure -> {
                 Text(

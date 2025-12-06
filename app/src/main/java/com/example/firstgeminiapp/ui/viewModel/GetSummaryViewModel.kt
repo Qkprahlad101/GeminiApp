@@ -40,7 +40,10 @@ class GetSummaryViewModel(private val getSummaryUseCase: GetSummaryUseCase): Vie
                 _uiState.value = UiState.Failure(error = e.toString())
             }
         }
+    }
 
+    fun reset() {
+        _uiState.value = UiState.Idle
     }
 
 }
