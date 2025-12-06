@@ -1,4 +1,4 @@
-package com.example.firstgeminiapp
+package com.example.firstgeminiapp.ui.screen
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
