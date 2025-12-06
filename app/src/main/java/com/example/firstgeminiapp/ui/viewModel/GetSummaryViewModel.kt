@@ -27,7 +27,7 @@ class GetSummaryViewModel(private val getSummaryUseCase: GetSummaryUseCase): Vie
         viewModelScope.launch {
             _uiState.value = UiState.Loading
             try {
-                val result = getSummaryUseCase.invoke(inputText)
+                val result = getSummaryUseCase.invoke(inputText.trim())
                when(result) {
                    is Result.Sucesss -> {
                        _uiState.value = UiState.Success(Summary(text = result.data.text, originalTextLength = result.data.originalTextLength))

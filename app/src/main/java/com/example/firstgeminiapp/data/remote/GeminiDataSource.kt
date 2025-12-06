@@ -8,15 +8,14 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.ai.ai
 import com.google.firebase.ai.type.GenerativeBackend
 import com.example.firstgeminiapp.domain.Result
+import com.google.firebase.ai.GenerativeModel
+
 class GeminiDataSource {
-    private val model by lazy {
-        try {
-            Firebase.ai(backend = GenerativeBackend.googleAI())
-                .generativeModel("gemini-2.5-flash")
-        } catch (e: Exception) {
-            throw FirebaseException("Failed to initialize Gemini model: ${e.message}", e)
-        }
+    private val model: GenerativeModel by lazy {
+        Firebase.ai(backend = GenerativeBackend.googleAI())
+            .generativeModel("gemini-2.5-flash")
     }
+
 
     suspend fun generateSummary(inputText: String): Result<Summary> {
         if (inputText.isBlank()) return Result.Failure(Summary(error = "Input text cannot be empty", ))
