@@ -4,24 +4,24 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.firstgeminiapp.domain.Result
 import com.example.firstgeminiapp.domain.model.Summary
-import com.example.firstgeminiapp.domain.usecase.GetSummaryUseCase
+import com.example.firstgeminiapp.domain.usecase.ConversationUseCase
 import com.example.firstgeminiapp.ui.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class GetSummaryViewModel(private val getSummaryUseCase: GetSummaryUseCase) : ViewModel() {
 
+class ConversationalViewModel(private val conversationUseCase: ConversationUseCase) : ViewModel() {
     private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
     val uiState: StateFlow<UiState>
         get() = _uiState.asStateFlow()
 
-    fun getSummary(inputText: String) {
+    fun getAnswer(inputText: String) {
         viewModelScope.launch {
             _uiState.value = UiState.Loading
             try {
-                val result = getSummaryUseCase.invoke(inputText.trim())
+                val result = conversationUseCase.invoke(inputText.trim())
                 when (result) {
                     is Result.Sucesss -> {
                         _uiState.value = UiState.Success(
