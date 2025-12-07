@@ -1,4 +1,4 @@
-# First Gemini App
+# Gemini App
 
 This is an Android application demonstrating the capabilities of Google's Gemini AI models using the **Firebase Vertex AI SDK**. The app showcases various generative AI features within a modern Android architecture.
 
