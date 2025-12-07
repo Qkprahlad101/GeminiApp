@@ -11,6 +11,7 @@ import com.example.firstgeminiapp.ui.screen.Screen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.firstgeminiapp.ui.screen.ConversationalScreen
+import com.example.firstgeminiapp.ui.screen.HomeScreen
 import com.example.firstgeminiapp.ui.screen.TextSummaryScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -23,9 +24,12 @@ fun AppNav() {
     ) { innerPadding ->
         NavHost(
             navController,
-            startDestination = Screen.CONVERSATIONAL.route,
+            startDestination = Screen.HOME.route,
             modifier = Modifier.padding(innerPadding)
         ) {
+            composable(Screen.HOME.route) {
+                HomeScreen(modifier = Modifier, navController = navController)
+            }
             composable(Screen.TEXT_SUMMARY.route) {
                 TextSummaryScreen(modifier = Modifier)
             }
