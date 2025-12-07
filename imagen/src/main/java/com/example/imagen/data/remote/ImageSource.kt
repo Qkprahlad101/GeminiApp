@@ -48,13 +48,11 @@ class ImageSource {
                 ImageResponse(error = "Empty response")
             )
 
-            // Extract image URL
             val imageUrl = JSONObject(json)
                 .getJSONArray("images")
                 .getJSONObject(0)
                 .getString("url")
 
-            // Download actual image bytes
             val imageReq = Request.Builder().url(imageUrl).build()
             val imageRes = withContext(Dispatchers.IO) { client.newCall(imageReq).execute() }
 
