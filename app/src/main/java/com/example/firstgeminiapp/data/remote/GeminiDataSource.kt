@@ -8,6 +8,7 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.ai.ai
 import com.google.firebase.ai.type.GenerativeBackend
 import com.example.firstgeminiapp.domain.Result
+import com.example.firstgeminiapp.domain.model.Message
 import com.google.firebase.ai.GenerativeModel
 
 class GeminiDataSource {
@@ -26,13 +27,30 @@ class GeminiDataSource {
 
             val data = response.text?.trim()?.ifBlank { "No meaningful summary generated—try a different text!" }
                 ?: throw FirebaseException("Empty response from Gemini")
-            Result.Sucesss(Summary(text = data, originalTextLength = inputText.length, error = null))
+            Result.Success(Summary(text = data, originalTextLength = inputText.length, error = null))
         } catch (e: FirebaseException) {
             Log.d(DEBUG_LOG_TAG, "AI Service Error: ${e.message}")
             Result.Failure( Summary(error ="AI Service Error: ${e.message}"))
         } catch (e: Exception) {
             Log.d(DEBUG_LOG_TAG, "Failed to generate summary ${e.message}")
             Result.Failure(Summary(error = "Failed to generate summary: ${e.message}"))
+        }
+    }
+
+    suspend fun generateAnswer(inputText: String) : Result<Message> {
+        if (inputText.isBlank()) return Result.Failure(Message(error = "Input text cannot be empty"))
+        return try {
+            val response = model.generateContent(inputText)
+
+            val data = response.text?.trim()?.ifBlank { "No meaningful summary generated—try a different text!" }
+                ?: throw FirebaseException("Empty response from Gemini")
+            Result.Success(Message(message = data, isUser = false))
+        } catch (e: FirebaseException) {
+            Log.d(DEBUG_LOG_TAG, "AI Service Error: ${e.message}")
+            Result.Failure(  Message(error ="AI Service Error: ${e.message}", isUser = false))
+        } catch (e: Exception) {
+            Log.d(DEBUG_LOG_TAG, "Failed to generate summary ${e.message}")
+            Result.Failure(Message(error = "Failed to generate summary: ${e.message}", isUser = false))
         }
     }
 
