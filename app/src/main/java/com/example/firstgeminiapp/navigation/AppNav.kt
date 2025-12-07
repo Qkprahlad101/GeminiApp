@@ -16,6 +16,7 @@ import androidx.navigation.compose.composable
 import com.example.firstgeminiapp.ui.screen.ConversationalScreen
 import com.example.firstgeminiapp.ui.screen.HomeScreen
 import com.example.firstgeminiapp.ui.screen.TextSummaryScreen
+import com.example.imagen.ui.screen.GetImageFromPrompt
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -49,14 +50,7 @@ fun AppNav() {
                 )
             }
             composable(Screen.IMAGE_GENERATION.route) {
-//                TextSummaryScreen(modifier = Modifier)
-                Text(
-                    text = "Feature Coming Soon!",
-                    style = MaterialTheme.typography.displayMedium,
-                    color = MaterialTheme.colorScheme.secondary,
-                    modifier = Modifier.fillMaxSize(),
-                    textAlign = TextAlign.Center
-                )
+                GetImageFromPrompt()
             }
         }
     }
