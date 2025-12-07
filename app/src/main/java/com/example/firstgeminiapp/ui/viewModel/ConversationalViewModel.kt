@@ -51,6 +51,13 @@ class ConversationalViewModel(private val conversationUseCase: ConversationUseCa
         }
     }
 
+    fun addUserMessage(text: String) {
+        _conversations.value = _conversations.value + Message(
+            message = text,
+            isUser = true
+        )
+    }
+
     fun reset() {
         _uiState.value = UiState.Idle
         _conversations.value = emptyList()

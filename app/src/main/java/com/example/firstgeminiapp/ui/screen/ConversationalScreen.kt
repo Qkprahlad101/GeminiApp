@@ -80,6 +80,11 @@ fun ConversationalScreen(
                 contentPadding = PaddingValues(16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
+                val addItem = {
+                    item {
+                        MessageItem(Message(message = promptText, isUser = true))
+                    }
+                }
                 when (val state = uiState) {
                     is UiState.Idle -> {
                         if (conversationList.isNotEmpty()) {
@@ -141,6 +146,7 @@ fun ConversationalScreen(
                 Button(onClick = {
                     if (promptText.isNotBlank()) {
                         conversationalViewModel.getAnswer(promptText)
+                        conversationalViewModel.addUserMessage(promptText.trim())
                         promptText = ""
                     }
                 }) {
