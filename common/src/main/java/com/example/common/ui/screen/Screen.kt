@@ -1,4 +1,4 @@
-package com.example.firstgeminiapp.ui.screen
+package com.example.common.ui.screen
 
 enum class Screen(val route: String) {
     HOME("Home"),

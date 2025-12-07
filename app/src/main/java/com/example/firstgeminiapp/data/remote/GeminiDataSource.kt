@@ -1,13 +1,13 @@
 package com.example.firstgeminiapp.data.remote
 
 import android.util.Log
-import com.example.firstgeminiapp.di.Utils.DEBUG_LOG_TAG
 import com.example.firstgeminiapp.domain.model.Summary
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseException
 import com.google.firebase.ai.ai
 import com.google.firebase.ai.type.GenerativeBackend
-import com.example.firstgeminiapp.domain.Result
+import com.example.common.Utils.Result
+import com.example.common.Utils.Util.DEBUG_LOG_TAG
 import com.example.firstgeminiapp.domain.model.Message
 import com.google.firebase.ai.GenerativeModel
 

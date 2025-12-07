@@ -16,11 +16,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.example.common.ui.screen.Screen
 
 @ExperimentalMaterial3Api
 @Composable
 fun HomeScreen(modifier: Modifier, navController: NavController) {
-    val scrollable = rememberScrollState()
     Scaffold(
         topBar = {
             TopAppBar(

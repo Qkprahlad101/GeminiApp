@@ -9,10 +9,6 @@ import com.example.firstgeminiapp.ui.viewModel.ConversationalViewModel
 import com.example.firstgeminiapp.ui.viewModel.GetSummaryViewModel
 import org.koin.dsl.module
 import org.koin.androidx.viewmodel.dsl.viewModel
-
-object Utils {
-    const val DEBUG_LOG_TAG = "GeminiApp"
-}
 val appModule = module {
     single{ GeminiDataSource() }
     single<SummaryRepository> { SummaryRepositoryImpl(get()) }

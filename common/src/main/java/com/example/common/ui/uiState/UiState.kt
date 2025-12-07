@@ -1,4 +1,4 @@
-package com.example.firstgeminiapp.ui
+package com.example.common.ui.uiState
 
 sealed class UiState<out T> {
     object Idle : UiState<Nothing>()

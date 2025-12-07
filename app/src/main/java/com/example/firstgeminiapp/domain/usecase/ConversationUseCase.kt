@@ -1,6 +1,6 @@
 package com.example.firstgeminiapp.domain.usecase
 
-import com.example.firstgeminiapp.domain.Result
+import com.example.common.Utils.Result
 import com.example.firstgeminiapp.domain.model.Message
 import com.example.firstgeminiapp.domain.repository.SummaryRepository
 

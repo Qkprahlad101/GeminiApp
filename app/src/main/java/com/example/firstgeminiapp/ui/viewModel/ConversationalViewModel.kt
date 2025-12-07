@@ -2,10 +2,10 @@ package com.example.firstgeminiapp.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.firstgeminiapp.domain.Result
+import com.example.common.Utils.Result
 import com.example.firstgeminiapp.domain.model.Message
 import com.example.firstgeminiapp.domain.usecase.ConversationUseCase
-import com.example.firstgeminiapp.ui.UiState
+import com.example.common.ui.uiState.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -1,4 +1,4 @@
-package com.example.firstgeminiapp.domain
+package com.example.common.Utils
 
 sealed class Result<out T> {
     data class Success<out T>(val data: T) : Result<T> ()

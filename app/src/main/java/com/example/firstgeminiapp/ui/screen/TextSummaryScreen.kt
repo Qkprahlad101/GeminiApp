@@ -24,7 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.firstgeminiapp.ui.UiState
+import com.example.common.ui.uiState.UiState
 import com.example.firstgeminiapp.ui.viewModel.GetSummaryViewModel
 import org.koin.androidx.compose.koinViewModel
 

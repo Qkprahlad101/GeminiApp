@@ -38,7 +38,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.firstgeminiapp.domain.model.Message
-import com.example.firstgeminiapp.ui.UiState
+import com.example.common.ui.uiState.UiState
 import com.example.firstgeminiapp.ui.viewModel.ConversationalViewModel
 import org.koin.androidx.compose.koinViewModel
 
