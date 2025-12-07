@@ -1,10 +1,8 @@
 package com.example.firstgeminiapp.ui
 
-import com.example.firstgeminiapp.domain.model.Summary
-
-sealed class UiState {
-    object Idle : UiState()
-    object Loading : UiState()
-    data class Success(val data: Summary) : UiState()
-    data class Failure(val error: String) : UiState()
+sealed class UiState<out T> {
+    object Idle : UiState<Nothing>()
+    object Loading : UiState<Nothing>()
+    data class Success<out T>(val data: T) : UiState<T>()
+    data class Failure<out T>(val error: T) : UiState<T>()
 }

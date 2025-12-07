@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Send
@@ -21,13 +23,17 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.firstgeminiapp.domain.model.Message
 import com.example.firstgeminiapp.ui.viewModel.ConversationalViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -38,6 +44,8 @@ fun ConversationalScreen(
     modifier: Modifier
 ) {
 
+    val uiState by conversationalViewModel.uiState.collectAsState()
+    val conversationList by conversationalViewModel.conversations.collectAsState()
     var promptText by remember { mutableStateOf("") }
 
     Scaffold(
@@ -56,7 +64,14 @@ fun ConversationalScreen(
 
         }
     ) { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
+        Box(modifier = Modifier.padding(innerPadding)) {
+            Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Top) {
+                LazyColumn {
+                    items(conversationList) { item ->
+                        MessageItem(item)
+                    }
+                }
+            }
             Row(
                 verticalAlignment = Alignment.Bottom,
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -72,6 +87,7 @@ fun ConversationalScreen(
                 Button(onClick = {
                     conversationalViewModel.getAnswer(promptText)
                 }) {
+                    Text(text = "Send")
                     Icon(
                         imageVector = Icons.Default.Send,
                         contentDescription = "Send",
@@ -79,9 +95,19 @@ fun ConversationalScreen(
                     )
                 }
             }
-
-
         }
-
     }
+}
+
+
+@Composable
+fun MessageItem(message: Message) {
+    Text(
+        text = message.message.toString(),
+        color = if(message.isUser) Color.Black else Color.Gray,
+        textAlign = if(message.isUser) TextAlign.Left else TextAlign.Right,
+        modifier = Modifier
+            .fillMaxWidth(0.8f)
+            .padding(8.dp)
+    )
 }

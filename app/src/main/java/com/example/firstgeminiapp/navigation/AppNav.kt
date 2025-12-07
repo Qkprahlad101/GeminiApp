@@ -23,7 +23,7 @@ fun AppNav() {
     ) { innerPadding ->
         NavHost(
             navController,
-            startDestination = Screen.TEXT_SUMMARY.route,
+            startDestination = Screen.CONVERSATIONAL.route,
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.TEXT_SUMMARY.route) {

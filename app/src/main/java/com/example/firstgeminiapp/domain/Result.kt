@@ -1,8 +1,6 @@
 package com.example.firstgeminiapp.domain
 
-import com.example.firstgeminiapp.domain.model.Summary
-
-sealed class Result<Summary> {
-    data class Sucesss(val data: Summary) : Result<Summary> ()
-    data class Failure(val error: Summary) : Result<Summary>()
+sealed class Result<out T> {
+    data class Success<out T>(val data: T) : Result<T> ()
+    data class Failure<out T>(val error: T) : Result<T>()
 }

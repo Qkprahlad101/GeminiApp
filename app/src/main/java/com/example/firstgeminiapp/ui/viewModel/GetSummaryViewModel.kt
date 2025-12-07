@@ -13,8 +13,8 @@ import kotlinx.coroutines.launch
 
 class GetSummaryViewModel(private val getSummaryUseCase: GetSummaryUseCase) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
-    val uiState: StateFlow<UiState>
+    private val _uiState = MutableStateFlow<UiState<Summary>>(UiState.Idle)
+    val uiState: StateFlow<UiState<Summary>>
         get() = _uiState.asStateFlow()
 
     fun getSummary(inputText: String) {
@@ -23,7 +23,7 @@ class GetSummaryViewModel(private val getSummaryUseCase: GetSummaryUseCase) : Vi
             try {
                 val result = getSummaryUseCase.invoke(inputText.trim())
                 when (result) {
-                    is Result.Sucesss -> {
+                    is Result.Success -> {
                         _uiState.value = UiState.Success(
                             Summary(
                                 text = result.data.text,
@@ -33,11 +33,12 @@ class GetSummaryViewModel(private val getSummaryUseCase: GetSummaryUseCase) : Vi
                     }
 
                     is Result.Failure -> {
-                        _uiState.value = UiState.Failure(error = result.error.error.toString())
+                        _uiState.value =
+                            UiState.Failure<Summary>(Summary(error = result.error.error.toString()))
                     }
                 }
             } catch (e: Exception) {
-                _uiState.value = UiState.Failure(error = e.toString())
+                _uiState.value = UiState.Failure<Summary>(Summary(error = e.toString()))
             }
         }
     }
