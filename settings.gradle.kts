@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "FirstGeminiApp"
 include(":app")
- 
+include(":imagen")
+include(":common")
