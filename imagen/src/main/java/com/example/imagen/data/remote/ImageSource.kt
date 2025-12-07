@@ -18,9 +18,6 @@ class ImageSource {
 
     private val client = OkHttpClient()
 
-    // ⚠️ Keep this private and DO NOT push to public repos
-
-
     suspend fun generateImage(prompt: String): Result<ImageResponse> {
         return try {
             val url = "https://fal.run/fal-ai/nano-banana"
