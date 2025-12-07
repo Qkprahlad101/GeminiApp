@@ -106,14 +106,6 @@ fun ConversationalScreen(
                         }
                     }
                     is UiState.Success -> {
-                        item {
-                            MessageItem(
-                                Message(
-                                    message = state.data.message,
-                                    isUser = false
-                                )
-                            )
-                        }
                         items(conversationList.reversed()) { item ->
                             MessageItem(item)
                         }
