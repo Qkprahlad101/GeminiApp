@@ -3,9 +3,12 @@ package com.example.firstgeminiapp.navigation
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.compose.rememberNavController
 import com.example.firstgeminiapp.ui.screen.Screen
 import androidx.navigation.compose.NavHost
@@ -37,10 +40,23 @@ fun AppNav() {
                 ConversationalScreen(modifier = Modifier)
             }
             composable(Screen.IMAGE_DESCRIPTION.route) {
-                TextSummaryScreen(modifier = Modifier)
+//                TextSummaryScreen(modifier = Modifier)
+                Text(
+                    text = "Feature Coming Soon!",
+                    style = MaterialTheme.typography.displayMedium,
+                    color = MaterialTheme.colorScheme.secondary,
+                    modifier = Modifier.fillMaxSize()
+                )
             }
             composable(Screen.IMAGE_GENERATION.route) {
-                TextSummaryScreen(modifier = Modifier)
+//                TextSummaryScreen(modifier = Modifier)
+                Text(
+                    text = "Feature Coming Soon!",
+                    style = MaterialTheme.typography.displayMedium,
+                    color = MaterialTheme.colorScheme.secondary,
+                    modifier = Modifier.fillMaxSize(),
+                    textAlign = TextAlign.Center
+                )
             }
         }
     }
